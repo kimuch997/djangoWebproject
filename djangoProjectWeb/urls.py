@@ -46,6 +46,7 @@ urlpatterns = [
                   path('remove-cart/', views.plus_cart),
                   path('pluswishlsit/', views.plus_wishlist),
                   path('minuswishlist/', views.minus_wishlist),
+                  path('wishlist/', views.show_wishlist, name='wishlist'),
 
                   # loginregistration
 
