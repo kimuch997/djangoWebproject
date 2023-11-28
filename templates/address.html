@@ -1,0 +1,38 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %} Address {% endblock title %}
+{% block content %}
+    <div class="container my-5">
+        <div class="row">
+            <h3>Welcome<span class="text-capitalize"> {{ request.user }}</span></h3>
+            <hr>
+            <div class="col-sm-2 border-danger">
+                <ul class="list-unstyled">
+                    <li class="d-inline-flex"><a href="{% url 'profile' %}" class="btn btn-primary">Profile</a></li>
+                    <li class="d-inline-flex"><a href="{% url 'address' %}" class="btn">Address</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-8 offset-sm-1">
+                <div class="row">
+                    {% for ad in add %}
+                        <div class="col-sm-6">
+                            <div class="card m-2">
+                                <h3>
+                                    Address:{{ forloop.counter }}
+                                </h3>
+                                <p>Name: {{ ad.name }}</p>
+                                <p>Constituency: {{ ad.constituency }}</p>
+                                <p>Mobile: {{ ad.mobile }}</p>
+                                <p>County:{{ ad.county }}</p>
+                                <p>Pincode:{{ ad.zipcode }}</p>
+                                {#                            ad.id is the ID of the address you want to update.#}
+                                <p class="text-center"><a href="{% url 'updateAdress' pk=ad.id %}" type="button" class="btn btn-primary">Update</a></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

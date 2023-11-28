@@ -1,0 +1,54 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %} Contact Us {% endblock title %}
+{% block banner-slider %}
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/images/banner/b1.jpg' %}" alt="Los Angeles" width="1390" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/images/banner/b2.jpg' %}" alt="Chicago" width="1390" height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/images/banner/b3.jpg' %}" width="1390" height="500" alt="">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/images/banner/b4.jpg' %}" width="1390" height="500" alt="">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+{% endblock banner-slider %}
+
+{% block content %}
+    <div class="container mt-3">
+        <br>
+    <h2 class="text-center">Contact Us</h2>
+        <br>
+    <div class=" container">
+{#        _______________________USE LOGO FROM FONT AWESOME________________#}
+        <p class="flex-shrink-4 text-center">Address : 0224-001</p>
+        <p class="flex-shrink-4 text-center">Contact : 0704215252</p>
+        <p class="flex-shrink-4 text-center">Email : @gmail.com</p>
+
+    </div>
+
+    </div>
+{% endblock content %}

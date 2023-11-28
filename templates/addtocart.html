@@ -1,0 +1,62 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block content %}
+    <div class="container my-5">
+        <div class="row">
+            {% if cart %}
+                <h1 class="text-center mb-4">Shopping Cart</h1>
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3></h3>
+                            {% for item in cart %}
+                                <div class="row">
+                                    <div class="col-sm-3  align-self-center"><img src="{{ item.product.product_image.url }}"  alt="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"></div>
+                                    <div class="col-sm-9">
+                                        <div>
+                                            <h5>{{ item.product.title }}</h5>
+                                            <p class="mb-2 text-muted small">{{ item.product.description }}</p>
+                                            <div class="my-3">
+                                                <label for="quantity">Quantity:</label>
+                                                <a class="minus-cart btn" pid={{ item.product.id }}><i class="fas fa-minus-square fa-lg"></i></a>
+                                                <span id="quantity">{{ item.quantity }}</span>
+                                                <a class="plus-cart btn" pid={{ item.product.id }}><i class="fas fa-plus-square fa-lg"></i></a>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="#" class="remove-cart btn btn-sm btn-secondary mr-3" pid={{ item.product.id }}>Remove item</a>
+                                                <p class="mb-0"><span><strong>Ksh/{{ item.product.discounted_price }}</strong></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="text-muted">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>The Total Amount </h3>
+                            <ul class="list-group">
+                                <li class="list-group-item-action d-block ">Amount <span id="amount">Ksh.{{ amount }}</span></li>
+                                <li class="list-group-item-action d-block">Shipping <span>Ksh.40.00</span>
+                                    <div>
+                                        <strong>Total</strong><small> {including GST}</small>
+                                    </div>
+                                    <span id="totalamount"><strong>Ksh.{{ totalamount }}</strong></span>
+                                </li>
+                            </ul>
+                            <br>
+                            <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Place order</a></div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <h1 class="text-center mb-5">Cart is empty</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

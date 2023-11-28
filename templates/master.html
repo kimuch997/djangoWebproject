@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>djangoProject | {% block title %}{% endblock title %} |</title>
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'bootstrap/js/jquery-3.4.0.js' %}"></script>
+    <script src="{% static 'bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootstrap/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/myscript.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <script src="{% static 'bootstrap/js/all.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+    <link
+            rel="stylesheet"
+            href="{% static 'bootstrap/css/bootstrap-grid.css' %}"
+    />
+    <link
+            rel="stylesheet"
+            href="{% static 'bootstrap/css/bootstrap-reboot.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/js/all.min.js' %}" />
+    <link
+            rel="stylesheet"
+            href="{% static 'bootstrap/js/owl.carousel.min.js' %}"
+    />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-success">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/images/Neel.png' %}" width="70" height="70" alt=""/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto mb-2 my-lg-0" style="--bs-scroll-height: 100px">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'site-home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Products</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'category' 'ML' %}">Milk</a>
+                            <a class="dropdown-item" href="{% url 'category' 'CR'  %}">Ghee</a>
+                            <a class="dropdown-item" href="{% url 'category' 'MS'  %}">Milkshake</a>
+                            <a class="dropdown-item" href="{% url 'category' 'LS'  %}">lassi</a>
+                            <a class="dropdown-item" href="{% url 'category' 'GH'  %}">Ghee</a>
+                            <a class="dropdown-item" href="{% url 'category' 'PN'  %}">Paneer</a>
+                            <a class="dropdown-item" href="{% url 'category' 'CZ' %}">Cheese</a>
+                            <a class="dropdown-item" href="{% url 'category' 'IC' %}">Ice-cream</a>
+
+                            <hr class="dropdown-divider" />
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'about-us' %}"
+                        >About us</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'contact-us' %}">Contact us</a>
+                    </li>
+                    </ul>
+                    <form class="d-flex" role="search" action="search/">
+                        <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search"/>
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav me-auto mb-2 my-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Tony</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                            <a class="dropdown-item" href="#">Orders</a>
+                            <a class="dropdown-item" href="{% url 'password-change' %}">Change password</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{% if totalitem > 0 %} {{ totalitem }} {% endif %} </span>Cart</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="#" class="nav-link text-white"><span class="badg bg-danger">{% if wishitem > 0 %} {{ wishitem }} {% endif %}</span>
+                        <i class="fa fa-heart"></i></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item mx-2">
+                        <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a
+                                href="{% url 'customer-registration' %}"
+                                class="nav-link text-white"
+                        >Registration</a
+                        >
+                    </li>
+                {% endif %}
+                </ul>
+        </div>
+    </div>
+</nav>
+<section>{% block banner-slider %} {% endblock banner-slider %}</section>
+
+<section>{% block information %} {% endblock information %}</section>
+
+<section>{% block content %} {% endblock content %}</section>
+
+<footer
+        class="container-fluid bg-success fixed-bottom text-center pt-2 mt-5"
+>
+    Copyright :2022 || developed by : Tony Enterprises
+</footer>
+</body>
+</html>
